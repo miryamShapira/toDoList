@@ -52,7 +52,7 @@ var app = builder.Build();
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-app.MapGet("/","ToDo applicatin is running");
+//app.MapGet("/","ToDo applicatin is running");
 app.MapGet("/items", (ToDoDbContext db) =>
 {
     var list = db.Items?.ToList();
