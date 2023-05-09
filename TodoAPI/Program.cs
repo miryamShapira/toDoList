@@ -47,12 +47,12 @@ var xmlFilename = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 var app = builder.Build();
-if (app.Environment.IsDevelopment())
+
 {
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-
+app.MapGet("/","ToDo applicatin is running");
 app.MapGet("/items", (ToDoDbContext db) =>
 {
     var list = db.Items?.ToList();
