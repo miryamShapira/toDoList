@@ -61,6 +61,7 @@ app.MapGet("/items", (ToDoDbContext db) =>
 });
 
 
+app.MapGet("/", () => "the server is running!");
 
 app.MapPost("/addTask", async ([FromBody] Item item, ToDoDbContext db) =>
 {
