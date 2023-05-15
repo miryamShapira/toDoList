@@ -55,7 +55,7 @@ var app = builder.Build();
 //app.MapGet("/","ToDo applicatin is running");
 app.MapGet("/items", (ToDoDbContext db) =>
 {
-    var list = db.Items?.ToList();
+    var list = db.items?.ToList();
 
     return Results.Ok(list);
 });
@@ -65,17 +65,17 @@ app.MapGet("/", () => "the server is running!");
 
 app.MapPost("/addTask", async ([FromBody] Item item, ToDoDbContext db) =>
 {
-    await db.Items.AddRangeAsync(item);
+    await db.items.AddRangeAsync(item);
     await db.SaveChangesAsync();
 
     return Results.Ok(item);
 });
 app.MapPut("/completeTask/{taskId}", async ([FromRoute] int taskId, ToDoDbContext db) =>
 {
-if (await db.Items.FindAsync(taskId) is Item item)
+if (await db.items.FindAsync(taskId) is Item item)
     {   
     item.IsComplete=true;
-    db.Items.Update(item);
+    db.items.Update(item);
     await db.SaveChangesAsync();
     return Results.Ok(item);
     }
@@ -84,9 +84,9 @@ if (await db.Items.FindAsync(taskId) is Item item)
 
 app.MapDelete("/{taskId}", async ([FromRoute] int taskId, ToDoDbContext db) =>
 {
-    if (await db.Items.FindAsync(taskId) is Item item)
+    if (await db.items.FindAsync(taskId) is Item item)
     {
-        db.Items.Remove(item);
+        db.items.Remove(item);
         await db.SaveChangesAsync();
         return Results.Ok(item);
     }
