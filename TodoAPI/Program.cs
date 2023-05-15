@@ -6,7 +6,7 @@ using System.Reflection;
 //  using Microsoft.AspNetCore.OpenApi;
 
 var builder = WebApplication.CreateBuilder(args);
-builder.Services.AddDbContext<ToDoDbContext>(ctx => ctx.UseMySql("name=ToDoDB", Microsoft.EntityFrameworkCore.ServerVersion.Parse("8.0.32-mysql")));
+builder.Services.AddDbContext<ToDoDbContext>(ctx => ctx.UseMySql("name=bm24s1pupppgwzabwtq2", Microsoft.EntityFrameworkCore.ServerVersion.Parse("8.0.32-mysql")));
 
 const string MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
 builder.Services.AddCors(options =>
